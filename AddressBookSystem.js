@@ -90,6 +90,18 @@ function validateEmail(email){
     else return false
 }
 
+//UC 4 - edit name
+let editName = (addressBookArray, oldName, newName) =>{
+    
+    addressBookArray.forEach(addressBook => {
+        if(addressBook.firstName == oldName)
+            addressBook.firstName = newName
+            return true
+    });
+
+    return false
+} 
+
 //UC 3 - address book array
 
 let addressBookArray = [];
@@ -103,12 +115,20 @@ do{
             break;
         case 2:
             addressBookArray.forEach(element => {
+                console.log('=========================================')
                 console.log(element)
             });
-                       
+            break
+        case 3:
+            let oldName = prompt("Enter name to replace : ")
+            let newName = prompt("Enter name to replace : ")
+            if(editName(addressBookArray,oldName,newName))
+                console.log("Name updated successfully")
+            else
+                console.log("No record found with "+ oldName)
     }
 
-    console.log("Press 0 to exit \nPress 1 to add more contact\nPress 2 to display data")
+    console.log("Press 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name")
     choice = Number(prompt("Enter your choice : "))
         
 }while(choice!=0)
