@@ -51,14 +51,6 @@ function addContact(){
     return contactObj
 }
 
-function displayContact(contact){
-    console.log(contact)
-}
-
-let contact = addContact()
-displayContact(contact)
-
-
 //UC2
 function validateName(name){
     let newRegex = RegExp('^[A-Z]{1}[a-z]{2,}$')
@@ -97,3 +89,27 @@ function validateEmail(email){
         return true
     else return false
 }
+
+//UC 3 - address book array
+
+let addressBookArray = [];
+let choice = 1;
+do{
+    switch(choice){
+        case 0:
+            break
+        case 1:
+            addressBookArray.push(addContact());
+            break;
+        case 2:
+            addressBookArray.forEach(element => {
+                console.log(element)
+            });
+                       
+    }
+
+    console.log("Press 0 to exit \nPress 1 to add more contact\nPress 2 to display data")
+    choice = Number(prompt("Enter your choice : "))
+        
+}while(choice!=0)
+
