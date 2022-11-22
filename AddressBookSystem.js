@@ -102,9 +102,18 @@ let editName = (addressBookArray, oldName, newName) =>{
     return false
 } 
 
+//UC4 - Delete entry
+let deleteRecord = (addressBookArray, nameToDelete) =>{
+    for(let i=0;i<addressBookArray.length;i++){
+        if(addressBookArray[i].firstName === nameToDelete)
+            addressBookArray.splice(i,1)
+    }
+} 
+
 //UC 3 - address book array
 
 let addressBookArray = [];
+console.log(typeof addressBookArray)
 let choice = 1;
 do{
     switch(choice){
@@ -120,15 +129,20 @@ do{
             });
             break
         case 3:
-            let oldName = prompt("Enter name to replace : ")
-            let newName = prompt("Enter name to replace : ")
+            let oldName = prompt("Enter old name : ")
+            let newName = prompt("Enter new name : ")
             if(editName(addressBookArray,oldName,newName))
                 console.log("Name updated successfully")
             else
                 console.log("No record found with "+ oldName)
+            break
+        case 4:
+            let nameToDelete = prompt("Enter name to delete contact : ")
+            deleteRecord(addressBookArray,nameToDelete)
     }
 
-    console.log("Press 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name")
+    console.log("Press 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name"+
+                "\nPress 4 to delete record")
     choice = Number(prompt("Enter your choice : "))
         
 }while(choice!=0)
