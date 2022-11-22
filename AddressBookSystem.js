@@ -102,7 +102,7 @@ let editName = (addressBookArray, oldName, newName) =>{
     return false
 } 
 
-//UC4 - Delete entry
+//UC5 - Delete entry
 let deleteRecord = (addressBookArray, nameToDelete) =>{
     for(let i=0;i<addressBookArray.length;i++){
         if(addressBookArray[i].firstName === nameToDelete)
