@@ -102,7 +102,7 @@ let editName = (addressBookArray, oldName, newName) =>{
     return false
 } 
 
-//UC4 - Delete entry
+//UC 5 - Delete entry
 let deleteRecord = (addressBookArray, nameToDelete) =>{
     for(let i=0;i<addressBookArray.length;i++){
         if(addressBookArray[i].firstName === nameToDelete)
@@ -110,10 +110,13 @@ let deleteRecord = (addressBookArray, nameToDelete) =>{
     }
 } 
 
-//UC 3 - address book array
+//Uc 6 - count number of records
+let countRecords = (count,element) => {
+    return count+1
+}
 
+//UC 3 - address book array
 let addressBookArray = [];
-console.log(typeof addressBookArray)
 let choice = 1;
 do{
     switch(choice){
@@ -139,10 +142,14 @@ do{
         case 4:
             let nameToDelete = prompt("Enter name to delete contact : ")
             deleteRecord(addressBookArray,nameToDelete)
+            break
+        case 5:
+            let count = addressBookArray.reduce(countRecords,0)
+            console.log(count)
     }
 
-    console.log("Press 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name"+
-                "\nPress 4 to delete record")
+    console.log("\nPress 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name"+
+                "\nPress 4 to delete record\nPress 5 to count records")
     choice = Number(prompt("Enter your choice : "))
         
 }while(choice!=0)
