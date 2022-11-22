@@ -141,6 +141,19 @@ let serachByState = (addressBookArray,stateName) =>{
     return addressBookArray.filter(addressBook => addressBook.addressDetails.state == stateName)
 }
 
+//UC 10 - count of person by city or state
+let countOfPerson = (addressBookArray,searchValue, serachKey) => {
+    let result
+    if(serachKey == 'city'){
+        result = serachByCity(addressBookArray,searchValue)
+        console.log("Count of person from city "+searchValue + " : "+result.length)
+    }
+    else{
+        result = serachByState(addressBookArray,searchValue)
+        console.log("Count of person from state "+searchValue + " : "+result.length)
+    }
+}
+
 //UC 3 - address book array
 let addressBookArray = [];
 let choice = 1;
@@ -175,15 +188,26 @@ do{
             break
         case 6:
             let cityName = prompt('Enter city to search for : ')
-            console.log(serachByCity(addressBookArray,cityName))
+            cityArray = serachByCity(addressBookArray,cityName)
+            console.log(cityArray)
             break
         case 7:
             let stateName = prompt('Enter state to search for : ')
-            console.log(serachByState(addressBookArray,stateName))
+            let stateArray = serachByState(addressBookArray,stateName)
+            console.log(stateArray)
+            break
+        case 8:
+            let cityNameForCount = prompt('Enter city to get count of person for : ')
+            countOfPerson(addressBookArray,cityNameForCount,'city')
+            break
+        case 9:
+            let stateNameForCount = prompt('Enter state to get count of person for : ')
+            countOfPerson(addressBookArray,stateNameForCount,'state')
     }
 
     console.log("\nPress 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name"+
-                "\nPress 4 to delete record\nPress 5 to count records\nPress 6 to serach by city\nPress 7 to serach by state")
+                "\nPress 4 to delete record\nPress 5 to count records\nPress 6 to serach by city\nPress 7 to serach by state"+
+                "\nPress 8 to get count of person by city \nPress 9 to get count of person by state")
     choice = Number(prompt("Enter your choice : "))
         
 }while(choice!=0)
