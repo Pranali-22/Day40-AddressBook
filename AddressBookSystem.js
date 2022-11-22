@@ -39,6 +39,8 @@ class Contact{
 //UC1
 function addContact(){
     let firstName = prompt("Enter first name : ")
+    if(checkDuplicate(addressBookArray,firstName) == true) 
+        return null;
     let lastName = prompt("Enter last name : ")
     let phoneNumber = prompt("Enter phone number : ")
     let emailId = prompt("Enter email address : ")
@@ -113,6 +115,21 @@ let deleteRecord = (addressBookArray, nameToDelete) =>{
 //Uc 6 - count number of records
 let countRecords = (count,element) => {
     return count+1
+}
+
+//UC 7 - check duplicate
+function checkDuplicate(addressBookArray,firstName){
+    let flag = false
+    if(addressBookArray.length != 0){
+        addressBookArray.forEach(addressBook => {
+            if(addressBook.firstName == firstName){
+                console.log("First name already exists")
+                flag = true
+                return flag
+            }                
+        });
+    }
+    return flag
 }
 
 //UC 3 - address book array
