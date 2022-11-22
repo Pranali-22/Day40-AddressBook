@@ -171,7 +171,19 @@ let sortAddressBook = (addressBookArray) => {
 	addressBookArray.forEach(element => {
         console.log(element.toString())
     });
-	//sortedAddressBook.forEach(addressBook => addressBook.toString());
+}
+
+//UC 12 - sort address book by state
+let sortAddressBookByState = (addressBookArray) => {
+    addressBookArray.sort((a,b) => {
+        if(a.addressDetails.state > b.addressDetails.state)
+            return 1;
+        else
+            return -1
+    })
+	addressBookArray.forEach(element => {
+        console.log(element.toString())
+    });
 }
 
 //UC 3 - address book array
@@ -226,12 +238,15 @@ do{
             break
         case 10:
             sortAddressBook(addressBookArray);
-
+            break
+        case 11:
+            sortAddressBookByState(addressBookArray)
     }
 
     console.log("\nPress 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name"+
                 "\nPress 4 to delete record\nPress 5 to count records\nPress 6 to serach by city\nPress 7 to serach by state"+
-                "\nPress 8 to get count of person by city \nPress 9 to get count of person by state \nPress 10 to sort address book")
+                "\nPress 8 to get count of person by city \nPress 9 to get count of person by state"+
+                "\nPress 10 to sort address book by name \nPress 11 to sort address book by state")
     choice = Number(prompt("Enter your choice : "))
         
 }while(choice!=0)
