@@ -34,6 +34,12 @@ class Contact{
             this.addressDetails = addressDetails;
         else throw "Address is invalid"
     }
+
+    toString(){
+        return "FirstName : "+this.firstName+", LastName : "+this.lastName+", Phone Number : "+this.phoneNumber+
+        ", EmailID : "+this.emailId+", Address : "+this.addressDetails.address+", City : "+this.addressDetails.city+
+        ", State : "+this.addressDetails.state+", Zip : "+this.addressDetails.zip;
+    }
 }
 
 //UC1
@@ -154,6 +160,20 @@ let countOfPerson = (addressBookArray,searchValue, serachKey) => {
     }
 }
 
+//UC 11 - sort address book
+let sortAddressBook = (addressBookArray) => {
+    addressBookArray.sort((a,b) => {
+        if(a.firstName > b.firstName)
+            return 1;
+        else
+            return -1
+    })
+	addressBookArray.forEach(element => {
+        console.log(element.toString())
+    });
+	//sortedAddressBook.forEach(addressBook => addressBook.toString());
+}
+
 //UC 3 - address book array
 let addressBookArray = [];
 let choice = 1;
@@ -203,11 +223,15 @@ do{
         case 9:
             let stateNameForCount = prompt('Enter state to get count of person for : ')
             countOfPerson(addressBookArray,stateNameForCount,'state')
+            break
+        case 10:
+            sortAddressBook(addressBookArray);
+
     }
 
     console.log("\nPress 0 to exit \nPress 1 to add more contact\nPress 2 to display data\nPress 3 to edit name"+
                 "\nPress 4 to delete record\nPress 5 to count records\nPress 6 to serach by city\nPress 7 to serach by state"+
-                "\nPress 8 to get count of person by city \nPress 9 to get count of person by state")
+                "\nPress 8 to get count of person by city \nPress 9 to get count of person by state \nPress 10 to sort address book")
     choice = Number(prompt("Enter your choice : "))
         
 }while(choice!=0)
